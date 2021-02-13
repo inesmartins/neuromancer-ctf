@@ -1,20 +1,31 @@
-var http = require('http');
-const PORT = process.env.PORT || 5000
+const express = require('express');
+const path = require('path');
+var bodyParser = require('body-parser');
+const PORT = process.env.PORT || 5000;
 
-const smuggleParam = 'OFLAG'
+const app = express();
+app.use(express.static(path.join(__dirname, 'public')));
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-http.createServer(function (req, res) {
-    if (req.method === "GET") {
-        res.writeHead(200, {'Content-Type': 'text/html'});
-        res.end('<h1>My First Node.js Web Server</h1>');
-    } else if (req.method === smuggleParam) {
-      res.writeHead(200, {'Content-Type': 'text/html'});
-      res.end('<h1>You got it cowboy, flag = oposec{happybdayoposec}</h1>');
-    } else if (req.method === "POST") {
-        res.writeHead(400, {'Content-Type': 'text/html', 'Error': smuggleParam});
-        res.end('<h1>Smuggle not found</h1>');
+app.get('/', function (req, res) {
+    res.render('pages/index');
+});
+app.post('/login', function (req, res) {
+    const form_data = req.body;
+    console.log(req.body);
+    if (form_data && form_data.username === "case") {
+        if (form_data.password === "wintermute") {
+            res.send("here's your flag: oposec{happybday}");
+        } else {
+            res.send("password is not correct");
+        }
     } else {
-        res.writeHead(400, {'Content-Type': 'text/html'});
-        res.end('<h1>Yeah, that\'s not gonna fly</h1>');
+        res.send("user or password is not correct");
     }
-}).listen(PORT);
+});
+
+app.listen(PORT, () => console.log(`Listening on ${ PORT }`))
