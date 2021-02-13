@@ -3,7 +3,7 @@ var bodyParser = require('body-parser');
 const PORT = process.env.PORT || 5000;
 
 const app = express();
-const user = "CASE";
+const username = "CASE";
 const pwd = "WINTERMUTE";
 
 app.use(bodyParser.json());
@@ -22,14 +22,14 @@ app.get('/login', function (req, res) {
 app.post('/login', function (req, res) {
     const form_data = req.body;
     console.log(form_data);
-    if (form_data && form_data.user && form_data.user.toUpperCase() === user) {
+    if (form_data && form_data.username && form_data.username.toUpperCase() === username) {
         if (form_data.password && form_data.password.toUpperCase() === pwd) {
             res.send("here's your flag: oposec{happybday}");
         } else {
             res.send("password is not correct");
         }
     } else {
-        res.send("user or password is not correct");
+        res.send("username or password is not correct");
     }
 });
 
