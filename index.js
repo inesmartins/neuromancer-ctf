@@ -2,8 +2,8 @@ var http = require('http');
 const PORT = process.env.PORT || 5000
 
 http.createServer(function (req, res) {
-    res.writeHead(200, {'Content-Type': 'application/json'});
-    res.end(req);
+  res.writeHead(200, {'Content-Type': 'text/html'});
+  res.end('<p>' + req.method + '</p><p>' + req.headers.join(' ') + '</p>');
     /*
     if (req.method === "GET") {
         res.writeHead(200, {'Content-Type': 'text/html'});
