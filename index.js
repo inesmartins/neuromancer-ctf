@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', function (req, res) {
     res.set('Content-Type', 'text/html');
-    res.send('<!DOCTYPE html><html><body style="background-color:black"><img style="width:350px; position: absolute; top:50px; left: calc(50% - 175px);" src="https://upload.wikimedia.org/wikipedia/en/4/4b/Neuromancer_%28Book%29.jpg"/><!-- Cyberspace. A consensual hallucination experienced daily by billions of legitimate operators, in every nation, by children being taught mathematical concepts . . .  how do you get in?</></body></html>');
+    res.send('<!DOCTYPE html><html><body style="background-color:black"><img style="width:350px; position: absolute; top:50px; left: calc(50% - 175px);" src="https://upload.wikimedia.org/wikipedia/en/4/4b/Neuromancer_%28Book%29.jpg"/><!-- Cyberspace. A consensual hallucination experienced daily by billions of legitimate operators, in every nation, by children being taught mathematical concepts . . .  how do you get in?--></body></html>');
 });
 
 app.get('/login', function (req, res) {
