@@ -8,7 +8,7 @@ http.createServer(function (req, res) {
     } else if (req.method === "POST") {
         res.writeHead(200, {'Content-Type': 'text/html'});
         res.end('<h1>I feel like you\'re not trying hard enough</h1>');
-    } else if (req.method === "GPOST") {
+    } else if (req.method === "SMUGGLED") {
         res.writeHead(200, {'Content-Type': 'text/html'});
         //res.end('<h1>I sense you\'re trying to smuggle something...</h1>');
         res.end('<h1>You got it cowboy, flag = oposec{happybdayoposec}</h1>');
