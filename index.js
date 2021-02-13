@@ -22,7 +22,7 @@ app.get('/login', function (req, res) {
 app.post('/login', function (req, res) {
     const form_data = req.body;
     if (form_data && form_data.username.toUpperCase() === user) {
-        if (form_data.password.toUpperCase() === pwd) {
+        if (form_data.password && form_data.password.toUpperCase() === pwd) {
             res.send("here's your flag: oposec{happybday}");
         } else {
             res.send("password is not correct");
