@@ -8,7 +8,7 @@ http.createServer(function (req, res) {
     } else if (req.method === "POST") {
         res.writeHead(400, {'Content-Type': 'text/html', 'Error':'OFLAG'});
         res.end('<h1>Smuggle not found</h1><p>' + req.method + '</p>');
-    } else if ((req.method === "SMUGGLED") || (req.headers["content-length"] && req.headers["transfer-encoding"])) {
+    } else if ((req.method === "SMUGGLED") || (req.headers["Content-Length"] && req.headers["Transfer-Encoding"])) {
         res.writeHead(200, {'Content-Type': 'text/html'});
         res.end('<h1>You got it cowboy, flag = oposec{happybdayoposec}</h1><p>' + req.method + '</p>');
     } else {
