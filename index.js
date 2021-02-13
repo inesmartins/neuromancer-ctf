@@ -1,18 +1,15 @@
 const express = require('express');
-const path = require('path');
 var bodyParser = require('body-parser');
 const PORT = process.env.PORT || 5000;
 
 const app = express();
-app.use(express.static(path.join(__dirname, 'public')));
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', function (req, res) {
-    res.render('pages/index');
+    res.set('Content-Type', 'text/html');
+    res.send('<!DOCTYPE html><html><body style="background-color:black"><img style="width:350px; position: absolute; top:50px; left: calc(50% - 175px);" src="https://upload.wikimedia.org/wikipedia/en/4/4b/Neuromancer_%28Book%29.jpg"/></body></html>');
 });
 app.post('/login', function (req, res) {
     const form_data = req.body;
