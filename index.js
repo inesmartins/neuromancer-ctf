@@ -24,7 +24,7 @@ app.post('/login', function (req, res) {
     console.log(form_data);
     if (form_data && form_data.username && form_data.username.toUpperCase() === username) {
         if (form_data.password && form_data.password.toUpperCase() === pwd) {
-            res.send("here's your flag: oposec{happybday}");
+            res.send("here's your flag: flag{three_syllables_in_wintermute}");
         } else {
             res.send("password is not correct");
         }
